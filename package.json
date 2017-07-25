@@ -1,0 +1,24 @@
+{
+  "name": "react-iflow",
+  "version": "1.0.0",
+  "description": "The connection for react and iflow state management.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unadlib/react-iflow.git"
+  },
+  "keywords": [
+    "react",
+    "state",
+    "management"
+  ],
+  "author": "unadlib",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unadlib/react-iflow/issues"
+  },
+  "homepage": "https://github.com/unadlib/react-iflow#readme"
+}

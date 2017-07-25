@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+.idea/modules.xml
+.idea/react-iflow.iml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/markdown-navigator/profiles_settings.xml
