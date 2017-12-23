@@ -1,2 +1,2 @@
 # react-iflow
-The connection for react and iflow state management.
+The connector for react and iFlow state management.

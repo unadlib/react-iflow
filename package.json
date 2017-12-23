@@ -1,7 +1,7 @@
 {
   "name": "react-iflow",
-  "version": "1.0.0",
-  "description": "The connection for react and iflow state management.",
+  "version": "0.0.1",
+  "description": "The connector for react and iFlow state management.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,8 +12,8 @@
   },
   "keywords": [
     "react",
-    "state",
-    "management"
+    "state management",
+    "iFlow"
   ],
   "author": "unadlib",
   "license": "MIT",
