@@ -7,13 +7,11 @@ const store = iFlow({
   count: {
     calculate: function (number){
       this.counter += number
+      // this.a.push(1)
       // this.a[number] = number
     },
     counter: 0,
-    a: {
-      a: 1,
-      b:1
-    },
+    a: [1,2,3],
   }
 }).create()
 
@@ -24,7 +22,7 @@ class Body extends Component {
       <div>
         <button onClick={() => this.props.store.count.calculate(-1)}>-</button>
         {this.props.store.count.counter}
-        {Object.keys(this.props.store.count.a).join('')}
+        {/*{this.props.store.count.a.join('')}*/}
         <button onClick={() => this.props.store.count.calculate(1)}>+</button>
       </div>
     )
