@@ -20,5 +20,14 @@
   "bugs": {
     "url": "https://github.com/unadlib/react-iflow/issues"
   },
-  "homepage": "https://github.com/unadlib/react-iflow#readme"
+  "homepage": "https://github.com/unadlib/react-iflow#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  },
+  "dependencies": {
+    "react": "^16.2.0"
+  }
 }
