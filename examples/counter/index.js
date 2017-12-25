@@ -5,13 +5,17 @@ import flow from 'react-iflow'
 
 const store = iFlow({
   count: {
-    calculate: function (number){
+    calculate: function (number) {
       this.counter += number
+      this.counter += number
+      this.x = (n) => alert(n)
+      // this.a[this.counter+2] = {b:[1]}
+      // this.a[0].b.splice(0,1)
       // this.a.push(1)
       // this.a[number] = number
     },
     counter: 0,
-    a: [1,2,3],
+    a: [{b:[1]},{b:[1,2]}],
   }
 }).create()
 
@@ -21,8 +25,8 @@ class Body extends Component {
     return (
       <div>
         <button onClick={() => this.props.store.count.calculate(-1)}>-</button>
-        {this.props.store.count.counter}
-        {/*{this.props.store.count.a.join('')}*/}
+        {/*{this.props.store.count.counter}*/}
+        {this.props.store.count.a.filter((_,i)=>i<2).map(i=>i.b.join(''))}
         <button onClick={() => this.props.store.count.calculate(1)}>+</button>
       </div>
     )
