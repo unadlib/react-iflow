@@ -4,8 +4,11 @@
 export default function proxy (target, path = Object.create(null)) {
   return new Proxy(target, {
     get: (target, name, receiver) => {
+      if (name === '__pipe__') {
+        return Reflect.get(target, name, receiver)
+      }
       const isProxy = typeof target[name] === 'object'
-      if (target === this.props.store) {
+      if (target === this._store) {
         path = Object.create(null)
         this._getterPaths.add(path)
       }
@@ -36,6 +39,7 @@ export default function proxy (target, path = Object.create(null)) {
         }
       }
       if (isProxy) {
+
         return proxy.call(this, target[name], path[name])
       } else {
         return Reflect.get(target, name, receiver)

@@ -1,17 +1,23 @@
 import React, { Component } from 'react'
 import flow from 'react-iflow'
+import store from './store'
 
-@flow()
+@flow([(store, props) => {
+  return {
+    arr: store.count.arr,
+    add: store.count.add,
+    calculate: store.count.calculate,
+    e: props.size.a
+  }
+}], store)
 export default class Body extends Component {
   render () {
+    console.log('render Body')
     return (
       <div>
-        <button onClick={() => this.props.store.count.xxx(-1)}>-</button>
-        {JSON.stringify(this.props.store.count.c.b)}
-        {/*{Object.keys(this.props.store.count.c).map(i=>i)}*/}
-        {/*{arr}*/}
-        {this.props.store.count.a.length}
-        <button onClick={() => this.props.store.count.calculate(1)}>+</button>
+        <button onClick={() => this.props.add(1)}>-</button>
+        {this.props.arr}
+        <button onClick={() => this.props.calculate(1)}>+</button>
       </div>
     )
   }
