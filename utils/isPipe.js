@@ -1,1 +1,1 @@
-export default (param) => typeof param === 'object' && param.__pipe__
+export default (param) => typeof param === 'object' && param['__pipe__']
