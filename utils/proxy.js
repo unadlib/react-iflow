@@ -1,7 +1,11 @@
+import isUnproxy from './isUnproxy'
 /* global toString */
 
 // TODO Function does not have to be updated to the proxy view?
 export default function proxy (target, path = Object.create(null)) {
+  if (isUnproxy(target)) {
+    return target
+  }
   return new Proxy(target, {
     get: (target, name, receiver) => {
       if (name === '__pipe__') {
