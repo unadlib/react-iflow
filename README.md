@@ -70,7 +70,7 @@ import flow from 'react-iflow'
 ```
 `flow` is higher-order function，and it supports the decorator's writing. **If the last one argument of the flow is `store`, then the connected store will take it precedence.** 
 
-- **Selector**: In fact, in most cases, **you don't need to use selectors**😎, because iFlow will automatically help you diff state to determine if the component is updated, unless you need to compute derived data.
+- **Selector**: In fact, in most cases, 🎉🎉🎉**you don't need to use selectors**🎉🎉🎉, because iFlow will automatically help you diff state to determine if the component is updated, unless you need to compute derived data.
 
 ---
 - Higher-order functions
