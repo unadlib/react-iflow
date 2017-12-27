@@ -11,13 +11,14 @@ export default {
     file: `dist/index.js`,
     format: 'umd',
     name: pgk.name,
-    sourcemap: true
+    sourcemap: true,
+    globals: {
+      'react': 'React',
+      'prop-types': 'PropTypes'
+    },
+    exports: 'named'
   },
   external: ['react', 'prop-types'],
-  globals: {
-    'react': 'React',
-    'prop-types': 'PropTypes'
-  },
   plugins: [
     resolve(),
     babel({
