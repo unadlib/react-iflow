@@ -1,6 +1,7 @@
 # React iFlow
+
 The connector for React and iFlow state management.
----
+
 
 > **React iFlow** If you use React and iFlow to manage state, save all kinds of selectors cumbersome, while supporting a variety of user-defined store.
 
