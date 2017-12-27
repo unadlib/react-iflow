@@ -1,4 +1,4 @@
 module.exports = {
-  'iflow': '../../../iflow/lib',
-  'react-iflow': '../../lib',
+  'iflow': '../../../iflow',
+  'react-iflow': '../../dist',
 };

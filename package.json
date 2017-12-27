@@ -1,10 +1,15 @@
 {
   "name": "react-iflow",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.1",
   "description": "The connector for react and iFlow state management.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "build/lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:cover": "jest --coverage",
+    "test:cover:travis": "npm run test:cover && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "build": "rollup -c",
+    "release": "babel lib -d build/lib && babel utils -d build/utils"
   },
   "repository": {
     "type": "git",
@@ -23,9 +28,18 @@
   "homepage": "https://github.com/unadlib/react-iflow#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "coveralls": "^3.0.0",
+    "jest": "^22.0.4",
+    "rollup": "^0.53.0",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
+    "uglify-es": "^3.3.2"
   },
   "dependencies": {
     "prop-types": "^15.6.0",
