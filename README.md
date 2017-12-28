@@ -63,7 +63,7 @@ class Body extends Component {
 export default flow(store)(Body)
 ```
 ### Examples
-[React with iFlow examples](https://github.com/unadlib/iflow/tree/master/example)
+[React with iFlow examples](https://github.com/unadlib/iflow/tree/master/examples)
 ### API
 * flow -  the standard connector of iFlow store
 ```javascript
