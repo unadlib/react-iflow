@@ -1,6 +1,6 @@
 {
   "name": "react-iflow",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "The connector for react and iFlow state management.",
   "main": "dist/index.js",
   "module": "dist/index.js",
