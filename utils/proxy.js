@@ -22,7 +22,9 @@ export default function proxy (target, path = Object.create(null)) {
         if (!arrayPrototypes.includes(name)) {
           const isIncludes = arrayPrototypes.reduce((isIncludes, key) => isIncludes || !!path[key], false)
           if (!isIncludes) {
-            path[name] = Object.create(null)
+            if (!path[name]) {
+              path[name] = Object.create(null)
+            }
           } else {
             path = Object.create(null)
           }
@@ -35,7 +37,9 @@ export default function proxy (target, path = Object.create(null)) {
         if (!primitivePrototypes.includes(name)) {
           const isIncludes = primitivePrototypes.reduce((isIncludes, key) => isIncludes || key === name, false)
           if (!isIncludes) {
-            path[name] = Object.create(null)
+            if (!path[name]) {
+              path[name] = Object.create(null)
+            }
           } else {
             path = Object.create(null)
           }
@@ -44,7 +48,6 @@ export default function proxy (target, path = Object.create(null)) {
         }
       }
       if (isProxy) {
-
         return proxy.call(this, target[name], path[name])
       } else {
         return Reflect.get(target, name, receiver)
