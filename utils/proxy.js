@@ -2,7 +2,8 @@ import isUnproxy from './isUnproxy'
 /* global toString */
 
 // TODO Function does not have to be updated to the proxy view?
-// TODO Array list for paths?
+// TODO Map/Set list for paths?
+// TODO top path repeat?
 export default function proxy (target, path = Object.create(null)) {
   if (isUnproxy(target)) {
     return target
@@ -13,10 +14,11 @@ export default function proxy (target, path = Object.create(null)) {
         return Reflect.get(target, name, receiver)
       }
       const isProxy = typeof target[name] === 'object'
-      if (target === this._store) {
+      if (target === this._store && !this._getterPaths[name]) {
         path = Object.create(null)
-        this._getterPaths.add(path)
+        this._getterPaths[name] = path
       }
+
       if (toString.call(target) === '[object Array]') {
         const arrayPrototypes = Reflect.ownKeys(Array.prototype).filter(i => typeof i === 'string')
         if (!arrayPrototypes.includes(name)) {
@@ -47,6 +49,7 @@ export default function proxy (target, path = Object.create(null)) {
           path = Object.create(null)
         }
       }
+      if (typeof target[name] === 'function') delete path[name]
       if (isProxy) {
         return proxy.call(this, target[name], path[name])
       } else {
