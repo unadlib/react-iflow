@@ -13,12 +13,12 @@ export default function proxy (target, path = Object.create(null)) {
       if (name === '__pipe__') {
         return Reflect.get(target, name, receiver)
       }
-      const isProxy = typeof target[name] === 'object'
+      const descriptor = Reflect.getOwnPropertyDescriptor(target, name)
+      const isProxy = descriptor && typeof descriptor.value === 'object'
       if (target === this._store && !this._getterPaths[name]) {
         path = Object.create(null)
         this._getterPaths[name] = path
       }
-
       if (toString.call(target) === '[object Array]') {
         const arrayPrototypes = Reflect.ownKeys(Array.prototype).filter(i => typeof i === 'string')
         if (!arrayPrototypes.includes(name)) {
@@ -49,10 +49,10 @@ export default function proxy (target, path = Object.create(null)) {
           path = Object.create(null)
         }
       }
-      if (typeof target[name] === 'function') delete path[name]
       if (isProxy) {
-        return proxy.call(this, target[name], path[name])
+        return proxy.call(this, descriptor.value, path[name])
       } else {
+        if (descriptor && typeof descriptor.value === 'function') delete path[name]
         return Reflect.get(target, name, receiver)
       }
     }
