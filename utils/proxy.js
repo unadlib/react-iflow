@@ -15,11 +15,12 @@ export default function proxy (target, path = Object.create(null)) {
       }
       const descriptor = Reflect.getOwnPropertyDescriptor(target, name)
       const isProxy = descriptor && typeof descriptor.value === 'object'
-      if (target === this._store && !this._getterPaths[name]) {
+      const isRoot = target === this._store
+      if (isRoot && !this._getterPaths[name]) {
         path = Object.create(null)
         this._getterPaths[name] = path
       }
-      if (toString.call(target) === '[object Array]') {
+      if (!isRoot && toString.call(target) === '[object Array]') {
         const arrayPrototypes = Reflect.ownKeys(Array.prototype).filter(i => typeof i === 'string')
         if (!arrayPrototypes.includes(name)) {
           const isIncludes = arrayPrototypes.reduce((isIncludes, key) => isIncludes || !!path[key], false)
@@ -34,7 +35,7 @@ export default function proxy (target, path = Object.create(null)) {
           path = Object.create(null)
         }
       }
-      if (toString.call(target) === '[object Object]') {
+      if (!isRoot && toString.call(target) === '[object Object]') {
         const primitivePrototypes = [...Reflect.ownKeys(Symbol).map(key => Symbol[key]), 'toJSON']
         if (!primitivePrototypes.includes(name)) {
           const isIncludes = primitivePrototypes.reduce((isIncludes, key) => isIncludes || key === name, false)
@@ -50,7 +51,7 @@ export default function proxy (target, path = Object.create(null)) {
         }
       }
       if (isProxy) {
-        return proxy.call(this, descriptor.value, path[name])
+        return proxy.call(this, descriptor.value, isRoot ? path : path[name])
       } else {
         if (descriptor && typeof descriptor.value === 'function') delete path[name]
         return Reflect.get(target, name, receiver)
