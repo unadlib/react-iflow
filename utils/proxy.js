@@ -21,7 +21,7 @@ export default function proxy (target, path = Object.create(null)) {
         this._getterPaths[name] = path
       }
       if (!isRoot && toString.call(target) === '[object Array]') {
-        const arrayPrototypes = Reflect.ownKeys(Array.prototype).filter(i => typeof i === 'string')
+        const arrayPrototypes = [...Reflect.ownKeys(Array.prototype).filter(i => typeof i === 'string'), 'toJSON']
         if (!arrayPrototypes.includes(name)) {
           const isIncludes = arrayPrototypes.reduce((isIncludes, key) => isIncludes || !!path[key], false)
           if (!isIncludes) {
