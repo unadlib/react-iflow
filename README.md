@@ -7,7 +7,7 @@ The connector for React 🌈 iFlow state management.
 
 > 🔥🔥🔥**It is a highly efficient and concise React and iFlow store connector**🔥🔥🔥
 
-### Features
+### Features and benefits
 * Least possible time selector
 * Automatic array diff
 * Full support comprehensive selector
