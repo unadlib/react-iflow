@@ -80,7 +80,11 @@ import flow from 'react-iflow'
 class CustomComponent extends Component {}
 flow(store)(CustomComponent)
 ```
-
+If use `Provider`, you don't need to pass the store argument, unless you need to set the selector.
+```javascript
+class CustomComponent extends Component {}
+flow()(CustomComponent)
+```
 - Class decorator
 ```javascript
 @flow()
