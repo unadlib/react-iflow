@@ -65,7 +65,7 @@ export default flow(store)(Body)
 ### Examples
 [React with iFlow examples](https://github.com/unadlib/iflow/tree/master/examples)
 ### API
-#### 1. flow
+#### flow
 It's the standard connector of iFlow store
 ```javascript
 import flow from 'react-iflow'
@@ -124,14 +124,14 @@ class CustomComponent extends Component {}
 class CustomComponent extends Component {}
 ```
 
-#### 2. provider
+#### provider
 ```javascript
 import { Provider } from 'react-iflow'
 ReactDOM.render(<Provider store={store}><Body/></Provider>, document.getElementById('app'))
 ```
 - `Provider` depend on the react's `context` to complete the cross component transfer, and its role is exactly the same as react-redux's Provider if you are familiar with react-redux
 
-#### 3. connect
+#### connect
 ```javascript
 import { connect } from 'react-iflow'
 class CustomComponent extends Component {}
