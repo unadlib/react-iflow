@@ -85,6 +85,12 @@ If use `Provider`, you don't need to pass the store argument, unless you need to
 class CustomComponent extends Component {}
 flow()(CustomComponent)
 ```
+More concise way
+```javascript
+import { connect } from 'react-iflow'
+class CustomComponent extends Component {}
+connect(CustomComponent)
+```
 - Class decorator
 ```javascript
 @flow()
