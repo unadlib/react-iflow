@@ -77,19 +77,19 @@ import flow from 'react-iflow'
 - Higher-order functions
 ```javascript
 class CustomComponent extends Component {}
-export default flow(store)(CustomComponent)
+flow(store)(CustomComponent)
 ```
 
 - Class decorator
 ```javascript
 @flow()
-export default class CustomComponent extends Component {}
+class CustomComponent extends Component {}
 ```
 
 - User-defined store
 ```javascript
 @flow(store.count)
-export default class CustomComponent extends Component {}
+class CustomComponent extends Component {}
 ```
 
 - With array selectors functions
@@ -100,7 +100,7 @@ export default class CustomComponent extends Component {}
     count: state.count,
   }
 }],store)
-export default class CustomComponent extends Component {}
+class CustomComponent extends Component {}
 ```
 
 - With arguments selectors functions
@@ -120,7 +120,7 @@ export default class CustomComponent extends Component {}
   },
   store
 )
-export default class CustomComponent extends Component {}
+class CustomComponent extends Component {}
 ```
 
 * provider
@@ -128,8 +128,15 @@ export default class CustomComponent extends Component {}
 import { Provider } from 'react-iflow'
 ReactDOM.render(<Provider store={store}><Body/></Provider>, document.getElementById('app'))
 ```
-- `Provider` depend on the react's `context` to complete the cross component transfer, and its role is exactly the same as React-redux's Provider if you are familiar with React-redux
+- `Provider` depend on the react's `context` to complete the cross component transfer, and its role is exactly the same as react-redux's Provider if you are familiar with react-redux
 
+* connect
+```javascript
+import { connect } from 'react-iflow'
+class CustomComponent extends Component {}
+connect(CustomComponent)
+```
+When you call `Provider` inject store, you can use `connect` API to quickly connect store to the component, it's simple.
 ### License
 
 ---
