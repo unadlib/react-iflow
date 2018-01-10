@@ -20,7 +20,10 @@
     "state management",
     "iFlow"
   ],
-  "author": "unadlib",
+  "author": {
+    "name": "unadlib",
+    "email": "unadlib@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/unadlib/react-iflow/issues"
