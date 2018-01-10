@@ -1,3 +1,3 @@
 export default {
-  SelectorError: 'Selector error, please confirm selector.'
+  ConnectError: 'Connector error, please confirm it.'
 }
