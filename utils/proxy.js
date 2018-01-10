@@ -8,6 +8,7 @@ export default function proxy (target, path = Object.create(null)) {
   if (isUnproxy(target)) {
     return target
   }
+  // TODO use Proxy.revocable?
   return new Proxy(target, {
     get: (target, name, receiver) => {
       if (name === '__pipe__') {
