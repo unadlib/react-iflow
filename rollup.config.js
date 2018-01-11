@@ -10,7 +10,7 @@ export default {
   output: {
     file: `dist/index.js`,
     format: 'umd',
-    name: 'reactIflow',
+    name: 'iFlowReact',
     sourcemap: true,
     globals: {
       'react': 'React',
