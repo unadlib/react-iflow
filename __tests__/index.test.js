@@ -28,17 +28,17 @@ const store = iFlow({
     }
   }],
   m: {
-    x: 1,
+    x: [1],
   },
   n: 0,
   testAdd () {
-    this.m.x += 1
+    this.m.x[0] += 1
   },
   get a () {
     return this.n
   },
   get b () {
-    return this.m.x
+    return this.m.x[0]
   },
   get test () {
     return this.a + this.b
@@ -102,13 +102,16 @@ class Parent extends Component {
 const CountComponent2 = connect(class extends Component {
   render () {
     return (
-      <div>
-        <p className={'bar'}>{Object.keys(this.props.store.test)}</p>
+      <div className={'bar'}>
+        <p>{Object.keys(this.props.store.test)}</p>
       </div>
     )
   }
 })
 
 test('render test', () => {
-  expect(shallow(<Parent/>).contains(<CountComponent2/>)).toEqual(true)
+  const wraper = mount(<Parent/>)
+  const props = wraper.children().children().children().props()
+  props.store.testAdd()
+  expect(props.store.test).toEqual(3)
 })
