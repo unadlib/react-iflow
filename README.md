@@ -2,6 +2,9 @@
 
 The connector for React 🌈 iFlow state management.
 
+[![Travis](https://img.shields.io/travis/unadlib/react-iflow.svg)](https://travis-ci.org/unadlib/react-iflow)
+[![Coverage Status](https://coveralls.io/repos/github/unadlib/react-iflow/badge.svg?branch=master)](https://coveralls.io/github/unadlib/react-iflow?branch=master)
+[![npm](https://img.shields.io/npm/v/react-iflow.svg)](https://www.npmjs.com/package/react-iflow)
 
 > **React iFlow** If you use React and iFlow to manage state, save all kinds of selectors cumbersome, while supporting a variety of user-defined store.
 
