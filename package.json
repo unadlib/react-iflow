@@ -1,14 +1,23 @@
 {
   "name": "react-iflow",
-  "version": "1.0.0-alpha.22",
+  "version": "1.0.0-alpha.23",
   "description": "The connector for react and iFlow state management.",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "files": [
+    "dist",
+    "lib",
+    "utils"
+  ],
   "scripts": {
     "test": "jest",
     "test:cover": "jest --coverage",
     "test:cover:travis": "npm run test:cover && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "build": "rollup -c",
+    "build:clean": "rimraf dist",
+    "build:cjs": "cross-env NODE_ENV=cjs rollup -c -o dist/cjs/index.js",
+    "build:es": "cross-env NODE_ENV=es rollup -c -o dist/es/index.js",
+    "build:umd": "cross-env NODE_ENV=umd rollup -c -o dist/umd/index.js",
+    "build": "yarn build:clean && yarn build:cjs && yarn build:es && yarn build:umd",
     "release": "babel lib -d build/lib && babel utils -d build/utils"
   },
   "repository": {
@@ -37,12 +46,14 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "coveralls": "^3.0.0",
+    "cross-env": "^5.1.3",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "iflow": "^1.0.0-alpha.25",
+    "iflow": "^1.0.0-alpha.31",
     "jest": "^22.0.4",
     "react-dom": "^16.2.0",
     "react-test-renderer": "^16.2.0",
+    "rimraf": "^2.6.2",
     "rollup": "^0.53.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-node-resolve": "^3.0.0",

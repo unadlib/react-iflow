@@ -4,12 +4,12 @@ import uglify from 'rollup-plugin-uglify'
 import { minify } from 'uglify-es'
 
 const pgk = require('./package.json')
+const env = process.env.NODE_ENV
 
 export default {
   input: 'lib/index.js',
   output: {
-    file: `dist/index.js`,
-    format: 'umd',
+    format: env,
     name: 'iFlowReact',
     sourcemap: true,
     globals: {
