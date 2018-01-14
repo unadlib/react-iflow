@@ -102,7 +102,7 @@ connect(CustomComponent)
 class CustomComponent extends Component {}
 ```
 
-- User-defined store
+- User-defined select node store
 ```javascript
 @flow(store.count)
 class CustomComponent extends Component {}
