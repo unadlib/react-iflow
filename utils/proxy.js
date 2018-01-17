@@ -4,6 +4,7 @@ import isUnproxy from './isUnproxy'
 // TODO Function does not have to be updated to the proxy view?
 // TODO Map/Set list for paths?
 // TODO top path repeat?
+// TODO reduce proxy times
 export default function proxy (target, path = Object.create(null)) {
   if (isUnproxy(target)) {
     return target
