@@ -2,6 +2,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
 import uglify from 'rollup-plugin-uglify'
 import { minify } from 'uglify-es'
+import commonjs from 'rollup-plugin-commonjs'
 
 const pgk = require('./package.json')
 const env = process.env.NODE_ENV
@@ -14,11 +15,12 @@ export default {
     sourcemap: true,
     globals: {
       'react': 'React',
+      'iflow': 'iFlow',
       'prop-types': 'PropTypes'
     },
     exports: 'named'
   },
-  external: ['react', 'prop-types'],
+  external: ['react', 'prop-types', 'iflow'],
   plugins: [
     resolve(),
     babel({
@@ -35,6 +37,7 @@ export default {
       babelrc: false,
       exclude: 'node_modules/**',
     }),
+    commonjs(),
     uglify({}, minify)
   ],
 }
