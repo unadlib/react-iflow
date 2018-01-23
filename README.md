@@ -14,6 +14,7 @@ The connector for React 🌈 iFlow state management.
 * Least possible time selector
 * Automatic array diff
 * Full support comprehensive selector
+* Support immutable
 
 ### Install
 ```bash
