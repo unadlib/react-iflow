@@ -154,6 +154,66 @@ class CustomComponent extends Component {}
 connect(CustomComponent)
 ```
 When you call `Provider` inject store, you can use `connect` API to quickly connect store to the component, it's simple.
+
+#### immutable
+
+* Single-layer immutable store is effective when using immutable
+
+`@immutable`is a single-layer traversal props, so the mixed structure of the iFlow store and plain objects is invalid.
+  
+For example:
+
+ ```javascript
+ class Parent extends Component {
+   // this.props.sub is iflow store
+   render <Sub store={this.props.sub} />
+ }
+ 
+ @immutable
+ class Sub extends Component {
+   // omit
+ }
+ ```
+This is effective. But the following example is not valid:
+ 
+ ```javascript
+ class Parent extends Component {
+   // this.props.sub is iflow store
+   render <Sub store={{foo:'bar', sub: this.props.sub}} />
+ }
+ 
+ @immutable
+ class Sub extends Component {
+   // omit
+ }
+ ```
+
+Of course, if you're not using `@immutable` You can arbitrarily pass the iFlow store.
+
+* About the Usage of PureComponent
+ 
+Because the iFlow connector uses the mutable store by default, So the connector directly with the React.PureComponent connection will not be updated, iFlow connector corresponding component should be react.Component, do not worry, iFlow will automatically diff comparison, it is more efficient and automatic than the light comparison of React.PureComponent.
+
+If you really need to use react.PureComponent, then it is recommended that you could use cooperatively with `@immutable`. This is a great help in Sub-Component performance optimization.
+ 
+For example:
+
+ ```javascript
+ @flow(store)
+ @immutable
+ class Body extends PureComponent {
+   render () {
+     return (
+       <div>
+         <button onClick={() => this.props.store.calculate(-1)}>-</button>
+         {this.props.store.counter}
+         <button onClick={() => this.props.store.calculate(1)}>+</button>
+       </div>
+     )
+   }
+ }
+ ```
+ 
 ### License
 
 ---
