@@ -163,29 +163,35 @@ When you call `Provider` inject store, you can use `connect` API to quickly conn
   
 For example:
 
- ```javascript
- class Parent extends Component {
-   // this.props.sub is iflow store
-   render <Sub store={this.props.sub} />
- }
- 
- @immutable
- class Sub extends Component {
-   // omit
- }
- ```
+```javascript
+class Parent extends Component {
+  // this.props.sub is iflow store
+  render() {
+    return <Sub store={this.props.sub} />
+  }
+}
+
+@immutable
+class Sub extends Component {
+  // omit
+}
+```
+
 This is effective. But the following example is not valid:
  
  ```javascript
- class Parent extends Component {
-   // this.props.sub is iflow store
-   render <Sub store={{foo:'bar', sub: this.props.sub}} />
- }
- 
- @immutable
- class Sub extends Component {
-   // omit
- }
+class Parent extends Component {
+  // this.props.sub is iflow store
+  render() {
+    const store = {foo:'bar', sub: this.props.sub}
+    return <Sub store={store} />
+  }
+}
+
+@immutable
+class Sub extends Component {
+  // omit
+}
  ```
 
 Of course, if you're not using `@immutable` You can arbitrarily pass the iFlow store.
@@ -198,21 +204,21 @@ If you really need to use react.PureComponent, then it is recommended that you c
  
 For example:
 
- ```javascript
- @flow(store)
- @immutable
- class Body extends PureComponent {
-   render () {
-     return (
-       <div>
-         <button onClick={() => this.props.store.calculate(-1)}>-</button>
-         {this.props.store.counter}
-         <button onClick={() => this.props.store.calculate(1)}>+</button>
-       </div>
-     )
-   }
- }
- ```
+```javascript
+@flow(store)
+@immutable
+class Body extends PureComponent {
+  render () {
+    return (
+      <div>
+        <button onClick={() => this.props.store.calculate(-1)}>-</button>
+        {this.props.store.counter}
+        <button onClick={() => this.props.store.calculate(1)}>+</button>
+      </div>
+    )
+  }
+}
+```
  
 ### License
 
